@@ -10,6 +10,11 @@
       "StackName": "amplify-tlomb-dev-203351",
       "StackId": "arn:aws:cloudformation:ap-southeast-2:055789878667:stack/amplify-tlomb-dev-203351/5a111a20-9d1f-11ec-8a7a-02c6bb66ea40",
       "AmplifyAppId": "d3tya9ovq3sp26"
+    },
+    "categories": {
+      "auth": {
+        "tlombeb47f17d": {}
+      }
     }
   }
 }
