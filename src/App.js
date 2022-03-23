@@ -1,17 +1,24 @@
-import React from 'react'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import OrgChart from './components/OrgChart'
-function App() {
+import React, { useState } from "react";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Form from "./components/Form";
+import OrgChart from "./components/OrgChart";
+
+export default function App() {
+  const [formData, setFormData] = useState([]);
+
+  const childToParent = (data) => {
+    console.log(data)
+    setFormData(data)
+  }
+
   return (
     <div className="App">
-      <OrgChart />
+      <Form childToParent={childToParent} />
+
+      <OrgChart formData={formData} />
     </div>
-  )
+  );
 }
-export default App
-
-
-
 
 /* src/App.js */
 // import Todo from './todo/todo';

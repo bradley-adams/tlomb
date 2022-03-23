@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Chart from "react-google-charts";
-import { OrgData } from "./StaticOrgData"
+import { OrgData } from "./StaticOrgData";
 
 const OrgOptions = {
   allowHtml: true,
 };
+
 class OrgChart extends Component {
   render() {
     return (
@@ -23,4 +24,5 @@ class OrgChart extends Component {
     );
   }
 }
+
 export default OrgChart;
