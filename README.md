@@ -8,9 +8,17 @@ A Sports Tipping App.
 ### AWS
 * IAM - provides fine-grained access control across all of AWS.
 * Amplify - A set of purpose-built tools and features that lets frontend web and mobile developers quickly and easily build full-stack applications.
+
 * AppSync - Enables you to manage and update mobile app data in real-time between devices and the cloud, and allows apps to interact with the data on the mobile device when it is offline.
 * Cognito - Lets you easily add user sign-up and authentication to your mobile and web apps.
 * DynamoDB - Is a fully managed, serverless, key-value NoSQL database designed to run high-performance applications at any scale.
+* CloudFormation - 
+* EC2 - 
+* Lambda - 
+* Amazon RDS - 
+* S3 - 
+* VPC - 
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
