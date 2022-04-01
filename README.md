@@ -1,5 +1,6 @@
 # TLOMB React APP on amplify
 A Sports Tipping App.
+https://dev.d3qyliwa5ob16w.amplifyapp.com
 
 ## ToDos
 * Add some more info to readme.

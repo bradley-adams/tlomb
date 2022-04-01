@@ -10,6 +10,17 @@
       "StackName": "amplify-tlomb-dev-194229",
       "StackId": "arn:aws:cloudformation:ap-southeast-2:055789878667:stack/amplify-tlomb-dev-194229/3fe17150-ae62-11ec-ac8a-02da9a2f0a04",
       "AmplifyAppId": "d3qyliwa5ob16w"
+    },
+    "categories": {
+      "auth": {
+        "tlomb6162b480": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3qyliwa5ob16w",
+          "type": "manual"
+        }
+      }
     }
   }
 }
