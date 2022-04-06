@@ -4,7 +4,7 @@ import { createTodo } from "../graphql/mutations";
 import { listTodos } from "../graphql/queries";
 
 import "@aws-amplify/ui-react/styles.css";
-import "./Todo.scss"
+import "./Todo.scss";
 
 import awsExports from "../aws-exports";
 Amplify.configure(awsExports);
