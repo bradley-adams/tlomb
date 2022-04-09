@@ -20,7 +20,10 @@ const App = () => {
           type="button"
           aria-label="open drawer"
         >
-          <img src = "https://tipping.super.rugby/static/media/logoRegistration.227f441a74c760caf5d3d25dff18de3e.svg" alt="Super Rugby Pacific Tipping Logo"/>
+          <img
+            src="https://tipping.super.rugby/static/media/logoRegistration.227f441a74c760caf5d3d25dff18de3e.svg"
+            alt="Super Rugby Pacific Tipping Logo"
+          />
         </button>
       </header>
       <Authenticator>
