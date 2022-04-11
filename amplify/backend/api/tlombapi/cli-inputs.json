@@ -6,9 +6,11 @@
     "gqlSchemaPath": "/Users/bradleyadams/Desktop/Code/tlomb/amplify/backend/api/tlombapi/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 7,
-      "apiKeyExpirationDate": "2022-04-06T08:31:49.053Z",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-04-11T18:50:14.369Z",
       "keyDescription": "tlomb"
-    }
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
   }
 }

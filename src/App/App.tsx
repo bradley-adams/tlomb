@@ -1,7 +1,6 @@
 /* src/App.js */
 import React from "react";
 import Amplify from "aws-amplify";
-// @ts-ignore
 import Todo from "../Todo/Todo.tsx";
 import "./App.scss";
 
@@ -14,17 +13,6 @@ Amplify.configure(awsExports);
 const App = () => {
   return (
     <div>
-      <header>
-        <button>
-          <svg>
-            <path d="https://tipping.super.rugby/static/media/logoRegistration.227f441a74c760caf5d3d25dff18de3e.svg"></path>
-          </svg>
-          {/* <img
-            src="https://tipping.super.rugby/static/media/logoRegistration.227f441a74c760caf5d3d25dff18de3e.svg"
-            alt="Super Rugby Pacific Tipping Logo"
-          /> */}
-        </button>
-      </header>
       <Authenticator>
         {({ signOut, user }) => (
           <div id="container">
