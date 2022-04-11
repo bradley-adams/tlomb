@@ -25,8 +25,8 @@ const Todo = () => {
 
   async function fetchTodos() {
     try {
-      const todoData = await API.graphql(graphqlOperation(listTodos));
-      const todos = todoData.data.listTodos.items;
+      const todoData: any = await API.graphql(graphqlOperation(listTodos));
+      const todos = todoData.data;
       setTodos(todos);
     } catch (err) {
       console.log("error fetching todos");
