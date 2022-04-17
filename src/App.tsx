@@ -1,8 +1,12 @@
 /* src/App.js */
 import React, { useEffect, useState } from "react";
-import Amplify, { API, graphqlOperation } from "aws-amplify";
-import { createTodo } from "./graphql/mutations";
+import "./App.css";
+
+import Amplify from "aws-amplify";
 import { listTodos } from "./graphql/queries";
+import { ListTodosQuery, OnCreateTodoSubscription } from "./API";
+
+import { createTodo } from "./graphql/mutations";
 
 import awsExports from "./aws-exports";
 Amplify.configure(awsExports);
