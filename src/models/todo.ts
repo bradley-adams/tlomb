@@ -1,4 +1,4 @@
-import { ListTodosQuery, OnCreateTodoSubscription } from "../API";
+import { ListTodosQuery } from "../API";
 import { GraphQLResult } from "@aws-amplify/api";
 
 interface Todo {
@@ -15,12 +15,5 @@ function mapListTodosQuery(listTodosQuery: GraphQLResult<ListTodosQuery>): Todo[
   } as Todo)) || []
 }
 
-function mapOnCreateTodoSubscription(createTodoSubscription: OnCreateTodoSubscription): Todo {
-  const { id, name, description } = createTodoSubscription.onCreateTodo || {};
-  return {
-    id, name, description
-  } as Todo
-}
-
 export default Todo;
-export { mapListTodosQuery, mapOnCreateTodoSubscription }
+export { mapListTodosQuery as mapListTodos }
