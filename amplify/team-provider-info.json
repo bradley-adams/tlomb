@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tlomb-dev-144755-authRole",
+      "UnauthRoleArn": "arn:aws:iam::055789878667:role/amplify-tlomb-dev-144755-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::055789878667:role/amplify-tlomb-dev-144755-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-tlomb-dev-144755-deployment",
+      "UnauthRoleName": "amplify-tlomb-dev-144755-unauthRole",
+      "StackName": "amplify-tlomb-dev-144755",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:055789878667:stack/amplify-tlomb-dev-144755/1c6ca2d0-c442-11ec-838e-06923df62d44",
+      "AmplifyAppId": "d3j440h5fs8etz"
+    }
+  }
+}
