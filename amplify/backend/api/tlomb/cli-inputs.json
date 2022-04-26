@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "tlomb",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/bradleyadams/Desktop/Code/tlomb/amplify/backend/api/tlomb/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-04-26T09:15:46.121Z",
+      "keyDescription": "tlomb"
+    }
+  }
+}
