@@ -33,19 +33,6 @@ function App() {
     getData();
   }, []);
 
-  // useEffect(() => {
-  //   // @ts-ignore
-  //   const subscription = API.graphql(graphqlOperation(onCreateTodo)).subscribe({
-  //     next: (response: SubscriptionValue<OnCreateTodoSubscription>) => {
-  //       const todo = mapOnCreateTodoSubscription(response.value.data);
-  //       console.log(todo);
-  //       setTodos([...todos, todo]);
-  //     },
-  //   });
-
-  //   return () => subscription.unsubscribe();
-  // });
-
   const onCreateTodoHandler = (
     createTodoSubscription: OnCreateTodoSubscription
   ) => {
