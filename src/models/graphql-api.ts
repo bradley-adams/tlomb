@@ -11,6 +11,7 @@ export interface SubscriptionValue<T> {
   value: { data: T }
 }
 
+// Small Generic wrapper for type safety. Returns the result of API.graphql(...). Result is from type GraphQLResult<T>.
 async function callGraphQL<T>(query: any, options?: GraphQLOptions): Promise<GraphQLResult<T>> {
   return (await API.graphql(graphqlOperation(query, options))) as GraphQLResult<T>
 }
