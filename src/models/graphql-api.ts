@@ -16,6 +16,7 @@ async function callGraphQL<T>(query: any, options?: GraphQLOptions): Promise<Gra
   return (await API.graphql(graphqlOperation(query, options))) as GraphQLResult<T>
 }
 
+// Subscriptions enable realtime updates.
 export function subscribeGraphQL<T>(subscription: any, callback: (value: T) => void) {
   //@ts-ignore
   return API.graphql(graphqlOperation(subscription)).subscribe({

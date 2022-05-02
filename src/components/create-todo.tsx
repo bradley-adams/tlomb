@@ -19,6 +19,7 @@ const CreateTodo = () => {
 
   const saveTodo = async (name: string, description: string) => {
     try {
+      // to send a mutation the wrapper can be reused.
       const response = await callGraphQL<CreateTodoMutation>(createTodo, {
         input: { name, description },
       } as CreateTodoMutationVariables);
