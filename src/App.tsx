@@ -24,8 +24,9 @@ function App() {
     // Since the API call is asynchronous we define an asyc function getData()
     async function getData() {
       try {
-        // Call the GraphQl API with our rapper callGraphQL().
+        // Call the GraphQl API with our rapper callGraphQL(). Defines the generic type as ListTodosQuery
         const todoData = await callGraphQL<ListTodosQuery>(listTodos);
+        // The result being passed to the mapListTodos function which will return the ToDos as an array.
         const todos = mapListTodosQuery(todoData);
         setTodos(todos);
       } catch (error) {
