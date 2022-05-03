@@ -6,7 +6,7 @@ import Todo, {
   mapListTodosQuery,
   mapOnCreateTodoSubscription,
 } from "./models/todo";
-import callGraphQL, { subscribeGraphQL } from "./models/graphql-api";
+import callGraphQL, { subscribeGraphQL, SubscriptionValue } from "./models/graphql-api";
 import CreateTodo from "./components/create-todo";
 import { onCreateTodo } from "./graphql/subscriptions";
 
@@ -36,21 +36,35 @@ function App() {
     getData();
   }, []);
 
-  const onCreateTodoHandler = (
-    createTodoSubscription: OnCreateTodoSubscription
-  ) => {
-    const todo = mapOnCreateTodoSubscription(createTodoSubscription);
-    setTodos([...todos, todo]);
-  };
-
+  // handle the subscription
   useEffect(() => {
-    const subscription = subscribeGraphQL<OnCreateTodoSubscription>(
-      onCreateTodo,
-      onCreateTodoHandler
-    );
+    // @ts-ignore
+    const subscription = API.graphql(graphqlOperation(onCreateTodo)).subscribe({
+      next: (response: SubscriptionValue<OnCreateTodoSubscription>) => {
+        const todo = mapOnCreateTodoSubscription(response.value.data);
+        console.log(todo);
+        setTodos([...todos, todo]);
+      },
+    });
 
-    return () => subscription.unsubscribe();
-  }, [todos]);
+    return () => subscription.unsubscribe()
+  });
+
+  // const onCreateTodoHandler = (
+  //   createTodoSubscription: OnCreateTodoSubscription
+  // ) => {
+  //   const todo = mapOnCreateTodoSubscription(createTodoSubscription);
+  //   setTodos([...todos, todo]);
+  // };
+
+  // useEffect(() => {
+  //   const subscription = subscribeGraphQL<OnCreateTodoSubscription>(
+  //     onCreateTodo,
+  //     onCreateTodoHandler
+  //   );
+
+  //   return () => subscription.unsubscribe();
+  // }, [todos]);
 
   return (
     <div className="App">

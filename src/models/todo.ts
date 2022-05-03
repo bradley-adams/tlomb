@@ -16,7 +16,7 @@ function mapListTodosQuery(listTodosQuery: GraphQLResult<ListTodosQuery>): Todo[
   } as Todo)) || []
 }
 
-// Mapping function for out ToDo model
+// Mapping function for out ToDo model.
 function mapOnCreateTodoSubscription(createTodoSubscription: OnCreateTodoSubscription): Todo {
   const { id, name, description } = createTodoSubscription.onCreateTodo || {};
   return {
