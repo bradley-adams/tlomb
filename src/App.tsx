@@ -38,7 +38,9 @@ function App() {
 
   // handle the subscription
   useEffect(() => {
-    // @ts-ignore
+    // @ts-ignore (withou this compiler would complain that subscribe does not exist on type Promise<GraphQLResult> | Observable<object>)
+    // Api.graphql(...) funciton return type is from Promise<GraphQLResult> | Observable<object>
+    // Only the Observable has the subscribe function.
     const subscription = API.graphql(graphqlOperation(onCreateTodo)).subscribe({
       next: (response: SubscriptionValue<OnCreateTodoSubscription>) => {
         const todo = mapOnCreateTodoSubscription(response.value.data);

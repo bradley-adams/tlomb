@@ -7,6 +7,7 @@ export interface GraphQLOptions {
   authMode?: GRAPHQL_AUTH_MODE;
 }
 
+// generic interface
 export interface SubscriptionValue<T> {
   value: { data: T }
 }
