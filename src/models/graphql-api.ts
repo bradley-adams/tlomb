@@ -21,7 +21,9 @@ async function callGraphQL<T>(query: any, options?: GraphQLOptions): Promise<Gra
 export function subscribeGraphQL<T>(subscription: any, callback: (value: T) => void) {
   //@ts-ignore
   return API.graphql(graphqlOperation(subscription)).subscribe({
-    next: (response: SubscriptionValue<T>) => callback(response.value.data)
+    next: (response: SubscriptionValue<T>) => {
+      callback(response.value.data)
+    },
   });
 }
 

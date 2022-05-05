@@ -38,19 +38,25 @@ function App() {
 
   // handle the subscription
   useEffect(() => {
-    // @ts-ignore (withou this compiler would complain that subscribe does not exist on type Promise<GraphQLResult> | Observable<object>)
     // Api.graphql(...) funciton return type is from Promise<GraphQLResult> | Observable<object>
     // Only the Observable has the subscribe function.
+    // @ts-ignore (without this compiler would complain that subscribe does not exist on type Promise<GraphQLResult> | Observable<object>)
     const subscription = API.graphql(graphqlOperation(onCreateTodo)).subscribe({
+      // subscribe function itself takes an object as an argument with a next property, which needs a function that gets called whenever a new ToDo is created.
+      // The Parameter of the function is of type SubscriptionValue<OnCreateTodoSubscription>
       next: (response: SubscriptionValue<OnCreateTodoSubscription>) => {
+        // Pass response.value.data to the mapOnCreateTodoSubscription function which will retirn the ToDo.
         const todo = mapOnCreateTodoSubscription(response.value.data);
         console.log(todo);
+        // The state is update with the new Todo.
         setTodos([...todos, todo]);
       },
     });
 
+    // subscription is unsubscribed when the component gets unmounted to avoid memory leak
     return () => subscription.unsubscribe()
   });
+     
 
   // const onCreateTodoHandler = (
   //   createTodoSubscription: OnCreateTodoSubscription
