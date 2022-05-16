@@ -6,7 +6,7 @@ import Todo, {
   mapListTodosQuery,
   mapOnCreateTodoSubscription,
 } from "./models/todo";
-import callGraphQL, { subscribeGraphQL, SubscriptionValue } from "./models/graphql-api";
+import callGraphQL, { subscribeGraphQL } from "./models/graphql-api";
 import CreateTodo from "./components/create-todo";
 import { onCreateTodo } from "./graphql/subscriptions";
 
@@ -36,43 +36,43 @@ function App() {
     getData();
   }, []);
 
-  // handle the subscription
-  useEffect(() => {
-    // Api.graphql(...) funciton return type is from Promise<GraphQLResult> | Observable<object>
-    // Only the Observable has the subscribe function.
-    // @ts-ignore (without this compiler would complain that subscribe does not exist on type Promise<GraphQLResult> | Observable<object>)
-    const subscription = API.graphql(graphqlOperation(onCreateTodo)).subscribe({
-      // subscribe function itself takes an object as an argument with a next property, which needs a function that gets called whenever a new ToDo is created.
-      // The Parameter of the function is of type SubscriptionValue<OnCreateTodoSubscription>
-      next: (response: SubscriptionValue<OnCreateTodoSubscription>) => {
-        // Pass response.value.data to the mapOnCreateTodoSubscription function which will retirn the ToDo.
-        const todo = mapOnCreateTodoSubscription(response.value.data);
-        console.log(todo);
-        // The state is update with the new Todo.
-        setTodos([...todos, todo]);
-      },
-    });
-
-    // subscription is unsubscribed when the component gets unmounted to avoid memory leak
-    return () => subscription.unsubscribe()
-  });
-     
-
-  // const onCreateTodoHandler = (
-  //   createTodoSubscription: OnCreateTodoSubscription
-  // ) => {
-  //   const todo = mapOnCreateTodoSubscription(createTodoSubscription);
-  //   setTodos([...todos, todo]);
-  // };
-
+  // // handle the subscription
   // useEffect(() => {
-  //   const subscription = subscribeGraphQL<OnCreateTodoSubscription>(
-  //     onCreateTodo,
-  //     onCreateTodoHandler
-  //   );
+  //   // Api.graphql(...) funciton return type is from Promise<GraphQLResult> | Observable<object>
+  //   // Only the Observable has the subscribe function.
+  //   // @ts-ignore (without this compiler would complain that subscribe does not exist on type Promise<GraphQLResult> | Observable<object>)
+  //   const subscription = API.graphql(graphqlOperation(onCreateTodo)).subscribe({
+  //     // subscribe function itself takes an object as an argument with a next property, which needs a function that gets called whenever a new ToDo is created.
+  //     // The Parameter of the function is of type SubscriptionValue<OnCreateTodoSubscription>
+  //     next: (response: SubscriptionValue<OnCreateTodoSubscription>) => {
+  //       // Pass response.value.data to the mapOnCreateTodoSubscription function which will retirn the ToDo.
+  //       const todo = mapOnCreateTodoSubscription(response.value.data);
+  //       console.log(todo);
+  //       // The state is update with the new Todo.
+  //       setTodos([...todos, todo]);
+  //     },
+  //   });
+  //   // subscription is unsubscribed when the component gets unmounted to avoid memory leak
+  //   return () => subscription.unsubscribe()
+  // });
+     
+  // onCreateTodoHandler is calling the mapping funcitno and updateing the state with the new ToDo.
+  const onCreateTodoHandler = (
+    createTodoSubscription: OnCreateTodoSubscription
+  ) => {
+    const todo = mapOnCreateTodoSubscription(createTodoSubscription);
+    setTodos([...todos, todo]);
+  };
 
-  //   return () => subscription.unsubscribe();
-  // }, [todos]);
+  useEffect(() => {
+    // call sbscriberGraphQL wrapper func passing the onCreateTodo subscription and our onCreateTodoHandler
+    const subscription = subscribeGraphQL<OnCreateTodoSubscription>(
+      onCreateTodo,
+      onCreateTodoHandler
+    );
+    // subscription is unsubscribed when the component gets unmounted
+    return () => subscription.unsubscribe();
+  }, [todos]);
 
   return (
     <div className="App">
