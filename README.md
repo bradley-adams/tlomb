@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# TLOMB (The Legend of Marty Banks)
+This repo started as an idea to create a basic rugby information website (hence the name). Then I got aspirations to create a rugby tipping website after getting frustrated with the consistency of previous websites I have used. After digging into some prep I got interested in Amplify after dabbling in it a bit at my 9-5 job as a dev.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Started with this https://docs.amplify.aws/start/q/integration/react/ and made some changes along the way. Started changing some things around then after a chat with a collegue decided to start again in TS. 
 
 ## Available Scripts
 
