@@ -7,21 +7,23 @@ import { CreateTodoMutation, CreateTodoMutationVariables } from "../API";
 const CreateTodo = () => {
   const [name, setName] = useState<string>();
   const [description, setDescription] = useState<string>();
+  const [author, setAuthor] = useState<string>();
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
-    if (!!name && !!description) saveTodo(name, description);
+    if (!!name && !!description && !!author) saveTodo(name, description, author);
 
     setName("");
     setDescription("");
+    setAuthor("");
   };
 
-  const saveTodo = async (name: string, description: string) => {
+  const saveTodo = async (name: string, description: string, author: string) => {
     try {
       // to send a mutation the wrapper can be reused.
       const response = await callGraphQL<CreateTodoMutation>(createTodo, {
-        input: { name, description },
+        input: { name, description, author },
       } as CreateTodoMutationVariables);
     } catch (error) {
       console.error("Error creating todo", error);
@@ -49,6 +51,17 @@ const CreateTodo = () => {
             name="description"
             type="text"
             onChange={(event) => setDescription(event.target.value)}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          ToDo Author:
+          <input
+            id="author"
+            name="author"
+            type="text"
+            onChange={(event) => setAuthor(event.target.value)}
           />
         </label>
       </div>

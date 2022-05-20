@@ -83,6 +83,7 @@ function App() {
         <div key={t.id}>
           <h2>{t.name}</h2>
           <p>{t.description}</p>
+          <p>{t.author}</p>
         </div>
       ))}
     </div>
